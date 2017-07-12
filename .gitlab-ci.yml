@@ -14,7 +14,9 @@ maven-build:
   image: maven:3.5.0-jdk-8-alpine
   dependencies: [ng-build]
   stage: backend-build
-  script: "mvn package -B"
+  script:
+  - ls -al target/
+  - mvn package -B
   artifacts:
     paths:
       - target/*.jar
