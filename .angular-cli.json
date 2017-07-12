@@ -6,7 +6,7 @@
   "apps": [
     {
       "root": "src/main/ng",
-      "outDir": "dist",
+      "outDir": "target/ng-dist",
       "assets": [
         "assets",
         "favicon.ico"
