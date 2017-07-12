@@ -9,6 +9,7 @@ ng-build:
 maven-build:
   image: maven:3.5.0-jdk-8-alpine
   stage: build
+  dependencies: ng-build
   script: "mvn package -B"
   artifacts:
     paths:
