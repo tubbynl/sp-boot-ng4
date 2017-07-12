@@ -1,10 +1,14 @@
 # SpBootNg4
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.0.
+This project was generated with
+* [Spring-Boot CLI](https://projects.spring.io/spring-boot/) version 1.5.4
+* [Angular CLI](https://github.com/angular/angular-cli) version 1.2.0.
 
 ## Development server
+* Run `mvn spring-boot:run` for a dev backend server.
+* Run `npm start` for a dev front-end server. 
+* Navigate to `http://localhost:4200/`. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
