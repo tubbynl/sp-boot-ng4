@@ -1,8 +1,13 @@
-stages:
-  - build
-
+ng-build:
+  image: node:8.1.4-alpine
+  stage: build
+  script:
+   - yarn
+   - yarn global add @angular/cli
+   - ng build
+   
 maven-build:
-  image: maven:3-jdk-8
+  image: maven:3.5.0-jdk-8-alpine
   stage: build
   script: "mvn package -B"
   artifacts:
