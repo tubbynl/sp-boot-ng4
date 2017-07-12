@@ -9,6 +9,9 @@ ng-build:
    - yarn
    - yarn global add @angular/cli
    - ng build
+  artifacts:
+      paths:
+        - target/ng-dist
 
 maven-build:
   image: maven:3.5.0-jdk-8-alpine
