@@ -1,6 +1,10 @@
+stages:
+- frontend-build
+- backend-build
+
 ng-build:
   image: node:8.1.4-alpine
-  stage: build
+  stage: frontend-build
   script:
    - yarn
    - yarn global add @angular/cli
@@ -8,8 +12,8 @@ ng-build:
 
 maven-build:
   image: maven:3.5.0-jdk-8-alpine
-  stage: build
   dependencies: [ng-build]
+  stage: backend-build
   script: "mvn package -B"
   artifacts:
     paths:
