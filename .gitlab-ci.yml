@@ -4,6 +4,7 @@ variables:
 
 cache:
   untracked: true
+  key: "$CI_PROJECT_NAMESPACE/repository"
   paths:
     - repository
 
