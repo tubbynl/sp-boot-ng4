@@ -37,7 +37,7 @@ public class HeroController {
 
   @PostMapping
   public Hero create(@RequestBody Hero hero) {
-    //Long id = this.heroes.stream().map(Hero::getId).max(Long::compareTo).orElse(0l)+1;
+    Long id = this.heroes.stream().map(Hero::getId).max(Long::compareTo).orElse(0l)+1;
     Hero newHero = new Hero(id,hero.getName());
     this.heroes.add(newHero);
     return newHero;
