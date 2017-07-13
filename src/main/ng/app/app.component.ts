@@ -9,7 +9,7 @@ import { HelloService } from './services/hello.service';
 })
 export class AppComponent {
   title = 'Tour of Heroes';
-  selectedHero: Hero = HEROES[0];
+  selectedHero: Hero;
   heroes = HEROES;
 
   onSelect(hero: Hero): void {
