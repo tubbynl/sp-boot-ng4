@@ -35,6 +35,14 @@ public class HeroController {
     return this.heroes.stream().filter(h->h.getId().equals(id)).findAny().orElse(null);
   }
 
+  @PostMapping
+  public Hero create(@RequestBody Hero hero) {
+    //Long id = this.heroes.stream().map(Hero::getId).max(Long::compareTo).orElse(0l)+1;
+    Hero newHero = new Hero(id,hero.getName());
+    this.heroes.add(newHero);
+    return newHero;
+  }
+
   @PutMapping("/{id}")
   public Hero update(@PathVariable("id") Long id,@RequestBody Hero hero) {
     get(id).setName(hero.getName());
