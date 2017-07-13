@@ -13,7 +13,7 @@ ng-build:
   script:
    - yarn config set cache-folder repository/.yarn
    - yarn
-   - npm build
+   - ng build -prod
   artifacts:
       paths:
         - target
@@ -28,17 +28,17 @@ maven-build:
     paths:
       - target
 
-ng-test:
-  image: alexsuch/angular-cli:1.2.0
-  dependencies: [ng-build]
-  stage: test
-  script:
-   - yarn config set cache-folder repository/.yarn
-   - npm test
-  artifacts:
-    paths:
-      - target
-      - node_modules
+#ng-test:
+#  image: alexsuch/angular-cli:1.2.0
+#  dependencies: [ng-build]
+#  stage: test
+#  script:
+#   - yarn config set cache-folder repository/.yarn
+#   - ng test --watch=false
+#  artifacts:
+#    paths:
+#      - target
+#      - node_modules
 
 maven-test:
   image: maven:3.5.0-jdk-8-alpine
@@ -52,7 +52,7 @@ maven-test:
 
 package:
   image: maven:3.5.0-jdk-8-alpine
-  dependencies: [ng-test,maven-test]
+  dependencies: [ng-build,maven-test]
   stage: deploy
   script:
   - mvn package -B -DskipTests=true
