@@ -20,12 +20,16 @@ import { DashboardComponent } from './dashboard/dashboard.component'
         pathMatch: 'full'
       },
       {
+        path: 'dashboard',
+        component: DashboardComponent
+      },
+      {
         path: 'heroes',
         component: HeroListComponent
       },
       {
-        path: 'dashboard',
-        component: DashboardComponent
+        path: 'hero/:id',
+        component: HeroDetailComponent
       }
     ])
   ],
