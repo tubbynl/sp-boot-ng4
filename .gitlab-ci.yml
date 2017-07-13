@@ -31,7 +31,7 @@ maven-build:
   variables:
     MAVEN_OPTS: -Dmaven.repo.local=/.m2/repo
   script:
-  - ls -al target/
+  - ls -al /.m2/repo
   - mvn package -B
   artifacts:
     paths:
