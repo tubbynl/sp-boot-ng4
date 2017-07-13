@@ -1,38 +1,67 @@
-stages:
-- frontend-build
-- backend-build
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=repository/.m2 -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN -Dorg.slf4j.simpleLogger.showDateTime=true -Djava.awt.headless=true"
+  MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true"
+
+cache:
+  untracked: true
+  paths:
+    - repository
 
 ng-build:
   image: node:8.1.4-alpine
-  stage: frontend-build
-  cache:
-    key: ${CI_PROJECT_NAMESPACE}-yarn
-    untracked: true
-    paths:
-     - /.yarn
+  stage: build
   script:
-   - yarn config set cache-folder /.yarn
+   - yarn config set cache-folder repository/.yarn
    - yarn
    - yarn global add @angular/cli
    - ng build
   artifacts:
       paths:
-        - target/ng-dist
+        - target
 
 maven-build:
   image: maven:3.5.0-jdk-8-alpine
+  dependencies: [maven-build]
+  stage: build
+  script:
+  - mvn compile -B -DskipTests=true
+  artifacts:
+    paths:
+      - target
+
+
+ng-test:
+  image: node:8.1.4-alpine
   dependencies: [ng-build]
-  stage: backend-build
+  stage: test
+  script:
+  - ng test
+  artifacts:
+    paths:
+      - target
+
+maven-test:
+  image: maven:3.5.0-jdk-8-alpine
+  dependencies: [maven-build]
+  stage: test
+  script:
+  - mvn test -B
+  artifacts:
+    paths:
+      - target
+
+package:
+  image: maven:3.5.0-jdk-8-alpine
+  dependencies: [ng-test,maven-test]
+  stage: deploy
   cache:
-    key: ${CI_PROJECT_NAMESPACE}-m2
     untracked: true
     paths:
      - /.m2/repo
   variables:
     MAVEN_OPTS: -Dmaven.repo.local=/.m2/repo
   script:
-  - ls -al /.m2/repo
-  - mvn package -B
+  - mvn package -B -DskipTests=true
   artifacts:
     paths:
       - target/*.jar
