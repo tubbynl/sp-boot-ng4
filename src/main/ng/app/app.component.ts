@@ -9,11 +9,12 @@ import { HelloService } from './services/hello.service';
 })
 export class AppComponent {
   title = 'Tour of Heroes';
-  hero: Hero = {
-    id: 1,
-    name: 'Windstorm'
-  };
+  selectedHero: Hero = HEROES[0];
   heroes = HEROES;
+
+  onSelect(hero: Hero): void {
+    this.selectedHero = hero;
+  }
 }
 
 export class Hero {
