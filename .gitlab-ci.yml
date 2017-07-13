@@ -6,10 +6,10 @@ ng-build:
   image: node:8.1.4-alpine
   stage: frontend-build
   cache:
-      key: ${CI_PROJECT_NAMESPACE}-yarn
-      untracked: true
-      paths:
-        - /.yarn
+    key: ${CI_PROJECT_NAMESPACE}-yarn
+    untracked: true
+    paths:
+     - /.yarn
   script:
    - yarn config set cache-folder /.yarn
    - yarn
@@ -23,11 +23,11 @@ maven-build:
   image: maven:3.5.0-jdk-8-alpine
   dependencies: [ng-build]
   stage: backend-build
-    cache:
-        key: ${CI_PROJECT_NAMESPACE}-m2
-        untracked: true
-        paths:
-          - /.m2/repo
+  cache:
+    key: ${CI_PROJECT_NAMESPACE}-m2
+    untracked: true
+    paths:
+     - /.m2/repo
   variables:
     MAVEN_OPTS: -Dmaven.repo.local=/.m2/repo
   script:
