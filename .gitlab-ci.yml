@@ -12,7 +12,8 @@ ng-build:
   stage: build
   script:
    - yarn config set cache-folder repository/.yarn
-   - ng build
+   - yarn
+   - npm build
   artifacts:
       paths:
         - target
@@ -33,7 +34,7 @@ ng-test:
   stage: test
   script:
    - yarn config set cache-folder repository/.yarn
-   - ng test
+   - npm test
   artifacts:
     paths:
       - target
