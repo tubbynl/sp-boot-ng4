@@ -2,12 +2,17 @@ stages:
 - frontend-build
 - backend-build
 
+cache:
+  untracked: true
+  paths:
+    - .yarn-cache
+
 ng-build:
   image: node:8.1.4-alpine
   stage: frontend-build
   script:
+   - yarn config set cache-folder .yarn-cache
    - yarn
-   - yarn global add @angular/cli
    - ng build
   artifacts:
       paths:

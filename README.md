@@ -15,7 +15,7 @@ The app will automatically reload if you change any of the source files.
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
 
 ## Build
-* Run `npm buildProd` to build the front-end project
+* Run `npm build` to build the front-end project
 * Run `mvn package` to build the back-end project
 
 The build artifact(jar) will be stored in the `target` directory.
