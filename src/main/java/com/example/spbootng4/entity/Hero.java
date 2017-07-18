@@ -1,25 +1,13 @@
-package com.example.spbootng4;
+package com.example.spbootng4.entity;
 
 import java.time.LocalDateTime;
 
-public class Hero {
-  private Long id;
+public class Hero extends ObjectWithId {
   private String name;
 
-  public Hero() {
-  }
-
   public Hero(Long id, String name) {
-    this.id = id;
+    super(id);
     this.name = name;
-  }
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
   }
 
   public String getName() {
