@@ -7,9 +7,9 @@ import { HttpModule }    from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { HeroDetailComponent } from './hero-detail/hero-detail.component';
-import { HeroListComponent } from './hero-list/hero-list.component';
-import { HeroService } from './hero.service';
+import { HeroDetailComponent } from './hero/hero-detail.component';
+import { HeroListComponent } from './hero/hero-list.component';
+import { HeroService } from './hero/hero.service';
 import { DashboardComponent } from './dashboard/dashboard.component'
 
 @NgModule({
