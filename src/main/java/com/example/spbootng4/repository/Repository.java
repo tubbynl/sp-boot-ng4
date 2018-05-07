@@ -9,6 +9,8 @@ import java.util.stream.Stream;
 
 public interface Repository<T extends ObjectWithId> extends List<T> {
 
+  default List<T> findAll() {return this;}
+
   default Stream<T> filter(Predicate<T> filter) {
     return stream().filter(filter);
   }
