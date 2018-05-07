@@ -5,7 +5,7 @@ This project was generated with
 
 ## Development server
 * Run `mvn spring-boot:run` for a dev back-end server.
-* Run `npm start` for a dev front-end server. 
+* Run `npm run-script start` for a dev front-end server. 
 * Navigate to `http://localhost:4200/`. 
 
 The app will automatically reload if you change any of the source files.
@@ -15,7 +15,7 @@ The app will automatically reload if you change any of the source files.
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
 
 ## Build
-* Run `npm build` to build the front-end project
+* Run `npm run-script build` to build the front-end project
 * Run `mvn package` to build the back-end project
 
 The build artifact(jar) will be stored in the `target` directory.
